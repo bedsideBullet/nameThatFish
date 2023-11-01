@@ -1,11 +1,23 @@
-import "./styles/score-board.css";
-//  Where the score is presented
 
-const incorrectCount = 0;
-const correctCount = 0;
+import "./styles/score-board.css";
+
+
+
 const answersLeft = ["trout", "salmon", "tuna", "shark"];
 
-export function FunctionalScoreBoard() {
+
+
+interface ScoreBoardProps {
+  correctCount: number;
+  incorrectCount: number;
+  isGameOver: boolean;
+}
+
+
+export function FunctionalScoreBoard({correctCount, incorrectCount}: ScoreBoardProps) {
+  // const isGameOver = answersLeft.length === 0;
+ 
+
   return (
     <div id="score-board">
       <div>Incorrect 🔻: {incorrectCount}</div>
@@ -13,8 +25,8 @@ export function FunctionalScoreBoard() {
         {answersLeft.map((answer) => (
           <div key={answer} className="choice">
             {answer}
-          </div>
-        ))}
+         </div>
+        )).slice(correctCount + incorrectCount)}
       </div>
       <div>Correct ✅: {correctCount}</div>
     </div>
