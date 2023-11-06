@@ -7,9 +7,7 @@ export function FunctionalApp() {
 const [correctCount, setCorrectCount] = useState(0)
 const [incorrectCount, setIncorrectCount] = useState(0)
 
-const gameOver= correctCount + incorrectCount === 4
 
- 
 
   return (
     <>
@@ -27,7 +25,7 @@ const gameOver= correctCount + incorrectCount === 4
         correctCount={correctCount}
         incorrectCount={incorrectCount}
         setCorrectCount={setCorrectCount}
-        setIncorrectCount={setIncorrectCount}/>}
+        setIncorrectCount={setIncorrectCount}/> }
     </>
   );
 }

@@ -6,17 +6,14 @@ import "./styles/score-board.css";
 const answersLeft = ["trout", "salmon", "tuna", "shark"];
 
 
-
 interface ScoreBoardProps {
   correctCount: number;
   incorrectCount: number;
-  isGameOver: boolean;
 }
 
 
 export function FunctionalScoreBoard({correctCount, incorrectCount}: ScoreBoardProps) {
-  // const isGameOver = answersLeft.length === 0;
- 
+  
 
   return (
     <div id="score-board">
