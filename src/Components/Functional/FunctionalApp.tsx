@@ -1,31 +1,33 @@
 import { FunctionalGameBoard } from "./FunctionalGameBoard";
 import { FunctionalScoreBoard } from "./FunctionalScoreBoard";
 import { FunctionalFinalScore } from "./FunctionalFinalScore";
+import { initialFishes } from "./FunctionalGameBoard";
 import { useState } from "react";
 
 export function FunctionalApp() {
-const [correctCount, setCorrectCount] = useState(0)
-const [incorrectCount, setIncorrectCount] = useState(0)
-
-
+  const [correctCount, setCorrectCount] = useState(0);
+  const [incorrectCount, setIncorrectCount] = useState(0);
+  const totalCount = correctCount + incorrectCount;
 
   return (
     <>
-      <FunctionalScoreBoard 
+      <FunctionalScoreBoard
         correctCount={correctCount}
         incorrectCount={incorrectCount}
-        setCorrectCount={setCorrectCount}
-        setIncorrectCount={setIncorrectCount} />
-      <FunctionalGameBoard 
-        correctCount={correctCount}
-        incorrectCount={incorrectCount}
-        setCorrectCount={setCorrectCount}
-        setIncorrectCount={setIncorrectCount} />
-      {false && <FunctionalFinalScore  
-        correctCount={correctCount}
-        incorrectCount={incorrectCount}
-        setCorrectCount={setCorrectCount}
-        setIncorrectCount={setIncorrectCount}/> }
+      />
+      {totalCount < initialFishes.length && (
+        <FunctionalGameBoard
+          currentFishIndex={totalCount}
+          setCorrectCount={setCorrectCount}
+          setIncorrectCount={setIncorrectCount}
+        />
+      )}
+      {totalCount === initialFishes.length && (
+        <FunctionalFinalScore
+          correctCount={correctCount}
+          incorrectCount={incorrectCount}
+        />
+      )}
     </>
   );
 }
